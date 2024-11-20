@@ -1,6 +1,6 @@
 import pygame
 
-from Asteriod import Asteroid
+from Asteroid import Asteroid
 from Enemy_Handler import Enemy_Handler
 from Player_Handler import Player_Handler
 
