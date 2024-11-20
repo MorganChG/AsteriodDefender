@@ -14,13 +14,14 @@ class Ship:
         self.color = (200, 200, 200)
 
         self.size = 20
-        self.speed = 1
+
         self.facing_angle = 0
         self.circle_angle = 0
-        self.acc = 0
 
         self.pos = self.get_pos()
         self.get_points()
+
+        self.going_left = False
 
         self.bullets = []
 
@@ -34,6 +35,16 @@ class Ship:
     def update_facing_angle(self):
         self.facing_angle = self.get_angle() + 180
 
+    def update_pos(self):
+        self.pos = self.get_pos()
+
+    def update_bullets(self):
+        for bullet in self.bullets:
+            bullet.update()
+            if bullet.is_off_screen():
+                index = self.bullets.index(bullet)
+                self.bullets.pop(index)
+
     def draw(self):
         pygame.draw.line(self.Win, self.color, self.facing_point, self.left_point, 2)
         pygame.draw.line(self.Win, self.color, self.facing_point, self.right_point, 2)
@@ -44,10 +55,10 @@ class Ship:
         #pygame.draw.circle(Win, self.color, (300, 300), self.radius, 2)
 
     def rotate_left(self):
-        self.circle_angle -= 0.025
+        self.circle_angle -= 0.03
 
     def rotate_right(self):
-        self.circle_angle += 0.025
+        self.circle_angle += 0.03
 
     def get_angle(self):
         x, y = self.pos
@@ -74,15 +85,11 @@ class Ship:
     def get_bullets(self):
         return self.bullets
 
+    def set_going_left(self, boolean):
+        self.going_left = boolean
+
     def add_bullet(self):
         self.bullets.append(Bullet(self.Win,self.facing_point, self.facing_angle))
 
-    def update_bullets(self):
-        for bullet in self.bullets:
-            bullet.update()
-            if bullet.is_off_screen():
-                index = self.bullets.index(bullet)
-                self.bullets.pop(index)
-
-    def update_pos(self):
-        self.pos = self.get_pos()
+    def is_at_max_acc(self):
+        return self.acc > 0.5

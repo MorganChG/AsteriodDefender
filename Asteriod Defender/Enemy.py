@@ -15,7 +15,7 @@ class Enemy:
         self.facing_angle = self.get_angle()
         self.facing_point = pygame.Vector2()
 
-        self.hit_box = pygame.Rect(0,0,self.size + 10,self.size + 10)
+        self.hit_box = pygame.Rect(0,0,self.size * 2,self.size * 2)
 
         self.inside_points = []
         self.outside_points = []
@@ -131,5 +131,5 @@ class Enemy:
         self.shoot_timer += 1
 
     def can_shoot(self):
-        if self.shoot_timer % 100 == 0:
+        if self.shoot_timer % 125 == 0:
             self.add_bullet()

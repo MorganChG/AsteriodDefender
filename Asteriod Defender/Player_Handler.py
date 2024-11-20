@@ -18,6 +18,7 @@ class Player_Handler:
         elif keys[pygame.K_RIGHT]:
             self.player.rotate_right()
 
+
         if keys[pygame.K_SPACE] and not self.pressed:
             self.pressed = True
             self.player.add_bullet()
