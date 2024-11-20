@@ -3,7 +3,7 @@ from Asteroid import Asteroid
 class Asteroid_Handler:
     def __init__(self, Win):
         self.asteroid = Asteroid(Win)
-        self.HP = 5
+        self.HP = 10
 
     def update(self, enemies):
         self.asteroid.update()
@@ -13,7 +13,6 @@ class Asteroid_Handler:
         if self.is_hit(enemies):
             self.decrement_HP()
 
-
     def decrement_HP(self):
         self.HP -= 1
 
@@ -22,6 +21,9 @@ class Asteroid_Handler:
             if self.asteroid.is_hit(enemy.bullets):
                 return True
         return False
+
+    def is_dead(self):
+        return self.HP <= 0
 
     def get_HP(self):
         return self.HP

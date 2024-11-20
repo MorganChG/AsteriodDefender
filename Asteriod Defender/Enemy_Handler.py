@@ -3,6 +3,7 @@ from Enemy import Enemy
 
 class Enemy_Handler:
     def __init__(self, Win):
+        self.time_before_spawn = 200
         self.Win = Win
         self.enemies = []
         self.spawn_timer = 0
@@ -22,8 +23,12 @@ class Enemy_Handler:
     def increment_timers(self):
         self.spawn_timer += 1
 
+    def decrement_time_before_spawn(self):
+        if self.spawn_timer % 500 == 0:
+            self.time_before_spawn /= 1.25
+
     def add_enemy(self):
-        if self.spawn_timer % 200 == 0:
+        if self.spawn_timer % self.time_before_spawn == 0:
             self.enemies.append(Enemy(self.Win))
 
     def get_enemies(self):
