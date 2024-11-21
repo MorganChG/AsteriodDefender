@@ -24,8 +24,8 @@ class Enemy_Handler:
         self.spawn_timer += 1
 
     def decrement_time_before_spawn(self):
-        if self.spawn_timer % 500 == 0:
-            self.time_before_spawn /= 1.25
+        if self.spawn_timer % 100 == 0:
+            self.time_before_spawn //= 2
 
     def add_enemy(self):
         if self.spawn_timer % self.time_before_spawn == 0:

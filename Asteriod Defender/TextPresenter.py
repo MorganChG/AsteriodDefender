@@ -4,7 +4,7 @@ class TextPresenter:
     def __init__(self, Win):
         self.Win = Win
 
-        self.font = pygame.font.SysFont('Consolas', 128)
+        self.font = pygame.font.SysFont('Consolas', 64)
         self.text_surface = None
 
         self.color = (100, 100, 100)

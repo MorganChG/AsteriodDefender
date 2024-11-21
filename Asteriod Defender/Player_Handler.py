@@ -19,10 +19,10 @@ class Player_Handler:
             self.player.rotate_right()
 
 
-        if keys[pygame.K_SPACE] and not self.pressed:
+        if keys[pygame.K_UP] and not self.pressed:
             self.pressed = True
             self.player.add_bullet()
-        elif not keys[pygame.K_SPACE]:
+        elif not keys[pygame.K_UP]:
             self.pressed = False
 
     def get_bullets(self):

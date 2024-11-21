@@ -131,5 +131,5 @@ class Enemy:
         self.shoot_timer += 1
 
     def can_shoot(self):
-        if self.shoot_timer % 125 == 0:
+        if self.shoot_timer % 100 == 0:
             self.add_bullet()

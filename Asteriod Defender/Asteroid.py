@@ -47,7 +47,7 @@ class Asteroid:
         return points
 
     def update_angle(self, angle):
-        return self.increment_angle(angle) if angle < 360 else 360
+        return self.increment_angle(angle) if angle < 360 else 350
 
     def is_hit(self, bullets):
         for bullet in bullets:
