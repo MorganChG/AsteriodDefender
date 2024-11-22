@@ -9,6 +9,7 @@ class Enemy_Handler:
         self.spawn_timer = 0
 
     def update(self, bullets):
+        self.decrement_time_before_spawn()
         self.increment_timers()
         self.add_enemy()
         self.update_enemies(bullets)
@@ -24,7 +25,7 @@ class Enemy_Handler:
         self.spawn_timer += 1
 
     def decrement_time_before_spawn(self):
-        if self.spawn_timer % 100 == 0:
+        if self.spawn_timer % 2000 == 0:
             self.time_before_spawn //= 2
 
     def add_enemy(self):
